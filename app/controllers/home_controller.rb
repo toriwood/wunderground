@@ -1,4 +1,10 @@
 class HomeController < ApplicationController
+  
+  #HW: use goecoder gem to get IP address and then use that location as the default location
+  #have to push to heroku to test since no IP address in local host 3000
+  #add more pictures for more conditions
+
+
   def index
 
    	@states = %w(HI AK CA OR WA ID UT NV AZ NM CO WY MT ND SD NB KS OK TX LA AR MO IA MN WI IL IN MI OH KY TN MS AL GA FL SC NC VA WV DE MD PA NY NJ CT RI MA VT NH ME DC )
@@ -7,7 +13,8 @@ class HomeController < ApplicationController
   		params[:city].gsub! " ", "_"
   		response = HTTParty.get("http://api.wunderground.com/api/#{ENV["wunderground_api_key"]}/conditions/q/#{params[:state]}/#{params[:city]}.json")["current_observation"]
   	else
-  		response = HTTParty.get("http://api.wunderground.com/api/#{ENV["wunderground_api_key"]}/conditions/q/FL/Jacksonville.json")["current_observation"]
+  		current_user.city.gsub! " ", "_"
+  		response = HTTParty.get("http://api.wunderground.com/api/#{ENV["wunderground_api_key"]}/conditions/q/#{current_user.state}/#{current_user.city}.json")["current_observation"]
   	end
   	#location, temp_f, temp_c, weather_icon, weather_word, forecast_link, feels_like
   	
