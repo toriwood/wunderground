@@ -14,8 +14,8 @@ class HomeController < ApplicationController
   		params[:city].gsub! " ", "_"
   		response = HTTParty.get("http://api.wunderground.com/api/#{ENV["wunderground_api_key"]}/conditions/q/#{params[:state]}/#{params[:city]}.json")["current_observation"]
   	else
-  		@current_location.city.gsub! " ", "_"
-  		response = HTTParty.get("http://api.wunderground.com/api/#{ENV["wunderground_api_key"]}/conditions/q/#{@current_location.state}/#{@current_location.city}.json")["current_observation"]
+  		# @current_location.city.gsub! " ", "_"
+  		response = HTTParty.get("http://api.wunderground.com/api/#{ENV["wunderground_api_key"]}/conditions/q/#{current_user.state}/#{current_user.city}.json")["current_observation"]
   	end
   	#location, temp_f, temp_c, weather_icon, weather_word, forecast_link, feels_like
   	
@@ -29,7 +29,7 @@ class HomeController < ApplicationController
   	@feels_like = response["feelslike_f"]
   	
 
-  	if @weather_word.downcase == "cloudy" || @weather_word.downcase == "overcast"
+  	if @weather_word.downcase == "cloudy" || @weather_word.downcase == "overcast" || @weather_word.downcase == "mostly cloudy"
   		@url = "https://images.unsplash.com/photo-1415905534840-dcbeb98bc78e?crop=entropy&fit=crop&fm=jpg&h=675&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1325"
   	elsif @weather_word.downcase == "clear" || @weather_word.downcase == "sunny" || @weather_word == "mostly sunny"
   		@url = "https://images.unsplash.com/photo-1421091242698-34f6ad7fc088?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=36d7f4a57b95c194adaecac96d4fc395"
