@@ -6,7 +6,15 @@ class HomeController < ApplicationController
 
   def index
 
-  	@current_location = request.location
+  def lookup_ip_location
+    if Rails.env.development?
+      Geocoder.search(request.remote_ip).first
+    else
+      request.location
+    end
+  end 
+
+  	@current_location = lookup_ip_location
 
    	@states = %w(HI AK CA OR WA ID UT NV AZ NM CO WY MT ND SD NB KS OK TX LA AR MO IA MN WI IL IN MI OH KY TN MS AL GA FL SC NC VA WV DE MD PA NY NJ CT RI MA VT NH ME DC )
   	@states.sort!

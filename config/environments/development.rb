@@ -1,4 +1,13 @@
 Rails.application.configure do
+  
+  class ActionDispatch::Request
+    def remote_ip
+      "71.212.123.5" # ipd home (Denver,CO or Renton,WA)                                                                                                                                                                                                                                                                        
+      # "208.87.35.103" # websiteuk.com -- Nassau, Bahamas                                                                                                                                                                                                                                                                      
+      # "50.78.167.161" # HOL Seattle, WA                                                                                                                                                                                                                                                                                       
+    end
+  end
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
