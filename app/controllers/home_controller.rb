@@ -6,9 +6,9 @@ class HomeController < ApplicationController
 
   def index
 
-    result = Geocoder.search(request.ip)
-    @current_city = result[0].data["city"]
-    @current_state = result[0].data["region_code"]
+    @result = Geocoder.search(request.ip)
+    # @current_city = result[0].data["city"]
+    # @current_state = result[0].data["region_code"]
 
    	@states = %w(HI AK CA OR WA ID UT NV AZ NM CO WY MT ND SD NB KS OK TX LA AR MO IA MN WI IL IN MI OH KY TN MS AL GA FL SC NC VA WV DE MD PA NY NJ CT RI MA VT NH ME DC )
   	@states.sort!
@@ -17,8 +17,8 @@ class HomeController < ApplicationController
   		params[:city].gsub! " ", "_"
   		response = HTTParty.get("http://api.wunderground.com/api/#{ENV["wunderground_api_key"]}/conditions/q/#{params[:state]}/#{params[:city]}.json")["current_observation"]
   	else
-  		@current_city.gsub! " ", "_"
-  		response = HTTParty.get("http://api.wunderground.com/api/#{ENV["wunderground_api_key"]}/conditions/q/#{@current_state}/#{@current_city}.json")["current_observation"]
+  	  current_user.city.gsub! " ", "_"
+  		response = HTTParty.get("http://api.wunderground.com/api/#{ENV["wunderground_api_key"]}/conditions/q/#{current_user.state}/#{current_user.city}.json")["current_observation"]
   	end
   	#location, temp_f, temp_c, weather_icon, weather_word, forecast_link, feels_like
 
