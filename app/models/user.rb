@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-	geocoded_by :current_location
+	geocoded_by :address
 	after_validation :geocode
 
   # Include default devise modules. Others available are:
