@@ -6,8 +6,8 @@
 </style>
 
 <div class="col s12 m6">
-	<div class="card small">
-		<div class="card-content s12 m6">
+	<div class="card">
+		<div class="card-content">
 			<p><span class="card-title">Forecast: <%= @location %></span></p>
 			<p class="right"><%= image_tag @icon %></p>
 			<p>Temp: <%= @temp_f %> ºF</p>
@@ -21,7 +21,7 @@
 </div>
 
 <div class="col s12 m6">
-	<div class="card small s12 m6">
+	<div class="card">
 		<div class="card-content">
 			<p><span class="card-title">Look up the forecast in another location:</span></p>
 			<%= render 'form' %>
