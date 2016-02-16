@@ -32,7 +32,21 @@ class HomeController < ApplicationController
   		@url = "https://images.unsplash.com/photo-1415905534840-dcbeb98bc78e?crop=entropy&fit=crop&fm=jpg&h=675&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1325"
   	elsif @weather_word.downcase == "clear" || @weather_word.downcase == "sunny" || @weather_word == "mostly sunny"
   		@url = "https://images.unsplash.com/photo-1421091242698-34f6ad7fc088?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=36d7f4a57b95c194adaecac96d4fc395"
+    elsif @weather_word.downcase == "chance of a thunderstorm" || @weather_word.downcase == "chance of thunderstorms" || @weather_word.downcase == "thunderstorm" || @weather_word.downcase == "thunderstorms"
+      @url = "https://images.unsplash.com/photo-1427507791254-e8d2fe7db7c0?crop=entropy&fit=crop&fm=jpg&h=675&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1325"
+    elsif @weather_word.downcase == "fog" || @weather_word.downcase == "haze"
+      @url = "https://images.unsplash.com/reserve/2UiWkCi7TAKfuSlY5L9g_IMG_3579.JPG?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=a63b55fba5f2756e5508162e1a7b1f24"
+    elsif @weather_word.downcase == "chance rain" || @weather_word.downcase == "chance of rain" || @weather_word == "rain"
+      @url = "https://images.unsplash.com/photo-1428592953211-077101b2021b?crop=entropy&fit=crop&fm=jpg&h=675&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1325"
+    elsif @weather_word.downcase == "chance of flurries" || @weather_word.downcase == "chance of freezing rain" || @weather_word == "chance of sleet" || @weather_word == "flurries" || @weather_word == "freezing rain" || @weather_word == "sleet"
+      @url = "https://images.unsplash.com/25/snow-light.JPG?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=346e7570c1549b5f1b48e54bc03935f5"
+    elsif @weather_word.downcase == "chance of snow" || @weather_word.downcase == "snow"
+      @url = "https://images.unsplash.com/photo-1431036101494-66a36de47def?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=56cdaadbf92590359edea1972024429a"
+    else
+      @url = "https://images.unsplash.com/photo-1443479579455-1860f114bf77?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=7bef5513fef774c78af3d88e63ab9baf"      
   	end
+
+
 
 
 
