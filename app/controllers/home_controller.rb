@@ -14,14 +14,14 @@ class HomeController < ApplicationController
   	@states.sort!
 
     response = HTTParty.get("http://api.wunderground.com/api/#{ENV["wunderground_api_key"]}/conditions/q/FL/Jacksonville.json")["current_observation"]
-  # 	# if params[:state] != nil && params[:city] != nil
-  # 	# 	params[:city].gsub! " ", "_"
-  # 	# 	response = HTTParty.get("http://api.wunderground.com/api/#{ENV["wunderground_api_key"]}/conditions/q/#{params[:state]}/#{params[:city]}.json")["current_observation"]
-  # 	# else
-  # 	# 	# @current_city.gsub! " ", "_"
-  # 		response = HTTParty.get("http://api.wunderground.com/api/#{ENV["wunderground_api_key"]}/conditions/q/FL/Jacksonville.json")["current_observation"]
-  # 	# end
-  # 	#location, temp_f, temp_c, weather_icon, weather_word, forecast_link, feels_like
+  	if params[:state] != nil && params[:city] != nil
+  		params[:city].gsub! " ", "_"
+  		response = HTTParty.get("http://api.wunderground.com/api/#{ENV["wunderground_api_key"]}/conditions/q/#{params[:state]}/#{params[:city]}.json")["current_observation"]
+  	else
+  		# @current_city.gsub! " ", "_"
+  		response = HTTParty.get("http://api.wunderground.com/api/#{ENV["wunderground_api_key"]}/conditions/q/FL/Jacksonville.json")["current_observation"]
+  	end
+  	#location, temp_f, temp_c, weather_icon, weather_word, forecast_link, feels_like
 
   	@location = response["display_location"]["city"]
   	@temp_f = response["temp_f"]
