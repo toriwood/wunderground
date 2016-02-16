@@ -6,9 +6,9 @@ class HomeController < ApplicationController
 
   def index
 
-    result = Geocoder.search(request.ip)
-    @current_city = result[0].data["city"]
-    @current_state = result[0].data["region_code"]
+    # result = Geocoder.search(request.ip)
+    # @current_city = result[0].data["city"]
+    # @current_state = result[0].data["region_code"]
 
    	@states = %w(HI AK CA OR WA ID UT NV AZ NM CO WY MT ND SD NB KS OK TX LA AR MO IA MN WI IL IN MI OH KY TN MS AL GA FL SC NC VA WV DE MD PA NY NJ CT RI MA VT NH ME DC )
   	@states.sort!
